@@ -1,0 +1,44 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 'add'">Dodavanje projekcije</h3>
+    <h3 mat-dialog-title *ngIf="flag == 'edit'">Modifikacija projekcije</h3>
+    <h3 mat-dialog-title *ngIf="flag == 'delete'">Brisanje projekcije</h3>
+    <form class="mat-dialog-content" #formControl= "ngForm">
+        <div class="form">
+           <mat-form-field>
+               <input matInput placeholder="Vreme" [(ngModel)] = "data.vreme" name="vreme" [disabled]= "flag == 'delete'" required>
+           </mat-form-field>     
+         </div>
+         <div class="form">
+            <mat-form-field>
+                <input matInput placeholder="Broj štampanih karata" [(ngModel)] = "data.brojStampanihKarata" name="brojStampanihKarata" [disabled]= "flag == 'delete'" required>
+            </mat-form-field>     
+          </div>
+
+          <div class="form">
+            <mat-form-field>
+              <mat-select [(ngModel)]="data.film" placeholder="Film" name="film" [compareWith]="compareTo" [disabled]="flag == 'delete'">
+                <mat-option *ngFor="let film of filmovi" [value]="film">
+                  {{ film.naziv }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+        <div mat-dialog-actions>
+            <button mat-button *ngIf="flag=='add'" type="submit" [mat-dialog-close]="1" (click)="add()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flag=='edit'" type="submit" [mat-dialog-close]="1" (click)="update()" [disabled]="!formControl.valid">
+                Sačuvaj
+            </button>
+            <button mat-button *ngIf="flag=='delete'" type="submit" [mat-dialog-close]="1" (click)="delete()">
+                Obriši
+            </button>
+            <button mat-button (click)="cancel()">
+                Poništi
+            </button>
+        </div>
+
+    </form>
+
+</div>

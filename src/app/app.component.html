@@ -1,0 +1,56 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="over" [fixedInViewport]="true" opened mode="side">
+    <mat-accordion>
+      <a mat-button style="text-align: center">
+        <mat-icon [routerLink]="['/film']">
+          home
+        </mat-icon>
+      </a>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Aktuelno
+          </mat-panel-title>
+          <mat-panel-description>
+            Aktuelni filmovi i projekcije
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/film']">Filmovi</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/projekcija']">Projekcije</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/zanr']" *ngIf="role=='Admin' || role=='Zaposleni'">Žanrovi</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/zanr-filma']" *ngIf="role=='Admin' || role=='Zaposleni'">Filmovi i žanrovi</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Profil
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+                <mat-nav-list>
+          <a mat-button [routerLink]="['/kupovina']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moje k' : 'K'}}upovine</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/korisnik']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moj nalog' : 'Korisnici'}}</a>
+        </mat-nav-list>
+                <mat-nav-list>
+          <a mat-button [routerLink]="['/tip-korisnika']" *ngIf="role=='Admin' || role=='Zaposleni'">Tipovi korisnika</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/auth']"  *ngIf='!isAuthenticated'>Prijava</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button (click) = "onLogout()" [routerLink]="['/auth']"  *ngIf='isAuthenticated'>Odjava</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

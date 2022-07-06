@@ -1,0 +1,59 @@
+<mat-toolbar color="primary">
+    <span class="title-center">{{role=='Registrovani korisnik' ? 'Moje k' : 'K'}}upovine</span>
+</mat-toolbar>
+
+<div class="container mat-elevation-z8">
+    <mat-table #table matSort [dataSource]="dataSource" class="mat-cell">
+
+        <!-- <ng-container matColumnDef="film">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Film</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.sedistaProjekcije.projekcija.film.naziv }}</mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="ukupanIznos">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Ukupan iznos</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.ukupanIznos }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="placeno">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Plaćeno</mat-header-cell>
+            <!-- <mat-cell *matCellDef="let row">{{ row.placeno }}</mat-cell> -->
+            <mat-cell *matCellDef="let row" [style.color]="row.placeno == true ? 'green' : 'red'">{{ row.placeno ? "Da"
+                : "Ne" }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vremeRezervacije">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vreme rezervacije</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.vremeRezervacije | date: "dd/MM/yyyy HH:mm" }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="vremePlacanja">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Vreme plaćanja</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.vremePlacanja | date: "dd/MM/yyyy HH:mm" }}</mat-cell>
+        </ng-container>
+
+
+        <ng-container matColumnDef="korisnik">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Korisnik</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.korisnik.korisnickoIme }}</mat-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row style="cursor: pointer" *matRowDef="let row; columns: displayedColumns;" (click)="selectRow(row)">
+        </mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5,10,25,100]">
+    </mat-paginator>
+    <!-- <div class="container mat-elevation-z8">
+        <app-sediste-projekcije *ngIf="selektovanaKupovina" [selektovanaKupovina]="selektovanaKupovina"> 
+        </app-sediste-projekcije> -->
+</div>
+
+<div class="container mat-elevation-z8">
+    <app-sediste-projekcije
+        *ngIf="selektovanaKupovina"
+        [selektovanaKupovina]="selektovanaKupovina">
+    </app-sediste-projekcije>
+</div>

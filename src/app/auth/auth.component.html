@@ -1,0 +1,87 @@
+<mat-card >
+    <mat-card-title>{{isLoginMode ? 'Prijava korisnika' : 'Kreiranje naloga'}}</mat-card-title>
+<mat-card-content>
+
+
+<form #authForm = "ngForm" [formGroup]="form" (ngSubmit)="onSubmit(authForm)">
+
+  <p *ngIf="!isLoginMode">
+    <mat-form-field>
+      <input
+       type="text"
+       class="form-control"
+       matInput
+       required
+       placeholder="Ime" 
+       formControlName="ime">
+    </mat-form-field>
+  </p>
+
+  <p *ngIf="!isLoginMode">
+    <mat-form-field>
+      <input
+       type="text"
+       class="form-control"
+       matInput
+       required
+       placeholder="Prezime" 
+       formControlName="prezime">
+    </mat-form-field>
+  </p>
+
+  <p *ngIf="!isLoginMode">
+    <mat-form-field>
+      <input
+       type="text"
+       class="form-control"
+       matInput
+       placeholder="Broj telefona" 
+       formControlName="telefon">
+    </mat-form-field>
+  </p>
+
+  <p *ngIf="!isLoginMode">
+    <mat-form-field>
+      <input
+       type="email"
+       class="form-control"
+       matInput
+       required
+       placeholder="Email" 
+       formControlName="email">
+    </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field>
+    <input
+     type="text"
+     class="form-control"
+     matInput
+     required
+     placeholder="Korisničko ime" 
+     formControlName="username">
+  </mat-form-field>
+</p>
+
+<p>
+  <mat-form-field>
+    <input 
+    type="password" 
+    matInput 
+    ngModel
+    required
+    placeholder="Lozinka" 
+    formControlName="password">
+  </mat-form-field>
+</p>
+
+  <div class="button">
+    <button mat-button type="submit" [disabled]="!authForm.valid">Potvrdi</button>
+  </div>
+
+  <div class="button">
+    <button mat-button type="button" (click)="onSwitchMode()">Odlazak na {{isLoginMode ? 'registraciju' : 'prijavu'}}</button>
+  </div>
+
+</form>

@@ -26,6 +26,9 @@
         </mat-nav-list>
         <mat-nav-list>
           <a mat-button [routerLink]="['/zanr-filma']" *ngIf="role=='Admin' || role=='Zaposleni'">Filmovi i žanrovi</a>
+        </mat-nav-list>       
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/sediste']"*ngIf="role=='Admin' || role=='Zaposleni'">Sedišta</a>
         </mat-nav-list>
       </mat-expansion-panel>
       <mat-expansion-panel>
@@ -34,20 +37,23 @@
             Profil
           </mat-panel-title>
         </mat-expansion-panel-header>
-                <mat-nav-list>
-          <a mat-button [routerLink]="['/kupovina']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moje k' : 'K'}}upovine</a>
+        <mat-nav-list>
+          <a mat-button [routerLink]="['/kupovina']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moje k'
+            : 'K'}}upovine</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/korisnik']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moj nalog' : 'Korisnici'}}</a>
-        </mat-nav-list>
-                <mat-nav-list>
-          <a mat-button [routerLink]="['/tip-korisnika']" *ngIf="role=='Admin' || role=='Zaposleni'">Tipovi korisnika</a>
+          <a mat-button [routerLink]="['/korisnik']" *ngIf='isAuthenticated'>{{role=='Registrovani korisnik' ? 'Moj
+            nalog' : 'Korisnici'}}</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['/auth']"  *ngIf='!isAuthenticated'>Prijava</a>
+          <a mat-button [routerLink]="['/tip-korisnika']" *ngIf="role=='Admin' || role=='Zaposleni'">Tipovi
+            korisnika</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button (click) = "onLogout()" [routerLink]="['/auth']"  *ngIf='isAuthenticated'>Odjava</a>
+          <a mat-button [routerLink]="['/auth']" *ngIf='!isAuthenticated'>Prijava</a>
+        </mat-nav-list>
+        <mat-nav-list>
+          <a mat-button (click)="onLogout()" [routerLink]="['/auth']" *ngIf='isAuthenticated'>Odjava</a>
         </mat-nav-list>
       </mat-expansion-panel>
     </mat-accordion>

@@ -25,8 +25,4 @@ export class ProjekcijaService {
     return this.httpClient.delete(`${PROJEKCIJA_URL}/${projekcijaID}`);
   }
 
-  // public getProjekcijaById(projekcijaID: Guid): Observable<any> {
-  //   return this.httpClient.get(`${PROJEKCIJA_URL}/${projekcijaID}`);
-  // }
-
 }

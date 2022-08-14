@@ -105,8 +105,6 @@ export class SedisteProjekcijeDialogComponent implements OnInit {
     this.data.sedisteID = this.data.sediste.sedisteID;
     this.data.projekcijaID = this.data.projekcija.projekcijaID;
     this.data.kupovinaID = this.data.kupovina.kupovinaID;
-    //this.data.film = this.data.projekcija.film;
-
 
     console.log(this.data);
 
@@ -129,8 +127,6 @@ export class SedisteProjekcijeDialogComponent implements OnInit {
     this.data.sedisteID = this.data.sediste.sedisteID;
     this.data.projekcijaID = this.data.projekcija.projekcijaID;
     this.data.kupovinaID = this.data.kupovina.kupovinaID;
-   // this.data.film = this.data.projekcija.film;
-
 
 
     this.sedisteProjekcijeService.deleteSedisteProjekcije(this.data.sedisteID, this.data.projekcijaID).subscribe(() => {
@@ -165,16 +161,10 @@ export class SedisteProjekcijeDialogComponent implements OnInit {
     return a.kupovinaID == b.kupovinaID;
   }
 
-  // compareToF(a: Film, b: Film) {
-  //   return a.filmID == b.filmID;
-  // }
-
-
   ngOnDestroy(): void {
     this.sedisteSubscription.unsubscribe();
     this.kupovinaSubscription.unsubscribe();
     this.projekcijaSubscription.unsubscribe();
-    //this.filmoviSubscription.unsubscribe();
   }
 
 }

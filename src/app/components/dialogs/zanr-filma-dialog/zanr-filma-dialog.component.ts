@@ -71,24 +71,6 @@ export class ZanrFilmaDialogComponent implements OnInit {
     }
   }
 
-  // public update(): void {
-  //   this.data.filmID = this.data.film.filmID;
-  //   this.data.zanrID = this.data.zanr.zanrID;
-  //   console.log(this.data);
-
-  //   this.zanrFilmaService.updateZanrFilma(this.data).subscribe(() => {
-  //     console.log(this.data);
-  //     this.snackBar.open('Uspešno modifikovan žanr filma.', 'OK', {
-  //       duration: 2500
-  //     })
-  //   }),
-  //   (error:Error) => {
-  //     console.log(error.name + ' ' + error.message);
-  //     this.snackBar.open('Došlo je do greške prilikom izmene žanra filma.', 'Zatvori', {
-  //       duration: 2500
-  //     })     
-  //   }
-  // }
 
   public delete(): void {
     console.log(this.data);

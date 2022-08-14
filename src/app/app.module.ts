@@ -81,7 +81,7 @@ import { TicketFailureComponent } from './components/stripe/ticket-failure/ticke
       ],
   imports: [
     BrowserModule,
-    AppRoutingModule, //on je ovo obrisao
+    AppRoutingModule, 
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
